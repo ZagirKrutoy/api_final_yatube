@@ -3,15 +3,21 @@ from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.filters import SearchFilter
 from django.shortcuts import get_object_or_404
 
-from posts.models import Post, Follow
+from posts.models import Post, Follow, Group
 from .serializers import (
     PostSerializer,
     CommentSerializer,
-    FollowSerializer
+    FollowSerializer,
+    GroupSerializer
 )
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
+
+
+class GroupViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Group.objects.all()
+    serializer_class = GroupSerializer
 
 
 class PostViewSet(viewsets.ModelViewSet):

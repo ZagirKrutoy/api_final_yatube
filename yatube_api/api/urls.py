@@ -6,10 +6,11 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView
 )
 
-from .views import PostViewSet, CommentViewSet, FollowViewSet
+from .views import PostViewSet, CommentViewSet, FollowViewSet, GroupViewSet
 
 router = DefaultRouter()
 router.register('posts', PostViewSet)
+router.register('groups', GroupViewSet)
 router.register(
     r'posts/(?P<post_id>\d+)/comments',
     CommentViewSet,
